@@ -1,0 +1,139 @@
+.sched-giant {
+  width: 95%;
+  max-width: 1150px;
+  margin: 40px auto;
+  position: relative;
+}
+
+/* Landing tiles */
+.sched-landing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.sched-tile {
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+  text-align: center;
+}
+.sched-tile:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.75);
+}
+.sched-tile h3 {
+  margin: 6px 0;
+}
+
+/* Icon area inside tiles */
+.tile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+/* Two-column layout */
+.sched-columns {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 18px;
+}
+.sched-left,
+.sched-right {
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+.input-row.two {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* Schedules grid cards */
+.schedules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+.schedule-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease;
+}
+.schedule-card:hover {
+  transform: translateY(-2px);
+}
+.schedule-card h4 {
+  margin: 0 0 6px 0;
+  font-size: 1rem;
+  color: #111827;
+}
+.schedule-card p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: #374151;
+}
+.schedule-card .meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Requests grid (player cards) */
+.requests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+.request-card {
+  display: grid;
+  grid-template-columns: 1fr 90px;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.request-card h5 {
+  margin: 0 0 4px 0;
+}
+.request-card p {
+  margin: 3px 0;
+  font-size: 0.9rem;
+  color: #374151;
+}
+.request-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.request-photo img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #2563eb33;
+}
+.request-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* Helpers */
+.hidden {
+  display: none !important;
+}

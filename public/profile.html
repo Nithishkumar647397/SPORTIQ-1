@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile - SportIQ</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+</head>
+<body>
+  <div class="profile-container">
+    <!-- Left Section -->
+    <div class="profile-details">
+      <h2 id="name">User Name</h2>
+      <p id="dob">DOB:</p>
+      <p id="age">Age:</p>
+      <p id="gender">Gender:</p>
+      <p id="mobile">Mobile:</p>
+      <p id="role">Role:</p>
+      <p id="sport">Sport:</p>
+      <p id="email">Email:</p>
+      <!-- Extended details -->
+      <p id="height">Height:</p>
+      <p id="weight">Weight:</p>
+      <p id="bloodgroup">Blood Group:</p>
+      <p id="address">Address:</p>
+
+      <div class="btn-group">
+        <button class="btn-small dashboard" onclick="window.location.href='dashboard.html'">🏠 Dashboard</button>
+        <button class="btn-small logout" id="logoutBtn">🚪 Logout</button>
+        <button class="btn-small edit" id="editBtn">✏️ Edit Profile</button>
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="profile-picture">
+      <img id="avatar" src="" alt="Profile Pic" class="avatar" />
+    </div>
+  </div>
+
+  <!-- ✅ Multi-step Edit Modal -->
+  <div id="editModal" class="edit-modal">
+    <div class="edit-content">
+      <!-- Step 1 -->
+      <div class="edit-step step-1 active">
+        <h3>Edit Profile – Step 1</h3>
+        <div class="input-box">
+          <label for="editAvatar">Profile Picture</label>
+          <input type="file" id="editAvatar" accept="image/*" />
+        </div>
+        <div class="input-box">
+          <label for="editName">Name</label>
+          <input type="text" id="editName" required />
+          <small class="error-msg" id="nameError"></small>
+        </div>
+        <div class="input-box">
+          <label for="editMobile">Mobile</label>
+          <input type="tel" id="editMobile" placeholder="10-digit number" required />
+          <small class="error-msg" id="mobileError"></small>
+        </div>
+        <div class="input-box">
+          <label for="editEmail">Email</label>
+          <input type="email" id="editEmail" required />
+          <small class="error-msg" id="emailError"></small>
+        </div>
+        <div class="btn-group modal-nav">
+          <button class="btn-small dashboard" id="nextToStep2">Next ➡</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="edit-step step-2">
+        <h3>Edit Profile – Step 2</h3>
+        <div class="input-box">
+          <label for="editHeight">Height (cm)</label>
+          <input type="number" id="editHeight" placeholder="e.g. 175" />
+          <small class="error-msg" id="heightError"></small>
+        </div>
+        <div class="input-box">
+          <label for="editWeight">Weight (kg)</label>
+          <input type="number" id="editWeight" placeholder="e.g. 70" />
+          <small class="error-msg" id="weightError"></small>
+        </div>
+        <div class="input-box">
+          <label for="editBloodgroup">Blood Group</label>
+          <input type="text" id="editBloodgroup" placeholder="e.g. O+" />
+          <small class="error-msg" id="bloodError"></small>
+        </div>
+        <div class="input-box">
+          <label for="editAddress">Address</label>
+          <textarea id="editAddress" placeholder="e.g. 123 Main St, NY 10001"></textarea>
+          <small class="error-msg" id="addressError"></small>
+        </div>
+        <div class="btn-group modal-nav">
+          <button class="btn-small logout" id="prevToStep1">⬅ Previous</button>
+          <button class="btn-small dashboard" id="saveEdit">💾 Save</button>
+          <button class="btn-small logout" id="cancelEdit">❌ Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ JS -->
+  <script type="module">
+    import { requireLogin, logoutUser } from "./js/core/auth.js";
+    import { getCurrentUser, updateCurrentUser } from "./js/modules/users.js";
+
+    requireLogin();
+    let user = getCurrentUser();
+    if (!user) window.location.href = "login.html";
+
+    // Age auto-calc
+    function calculateAge(dob) {
+      if (!dob) return "-";
+      const today = new Date();
+      const birth = new Date(dob);
+      let age = today.getFullYear() - birth.getFullYear();
+      const m = today.getMonth() - birth.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+      return age;
+    }
+
+    // Display profile values
+    function displayProfile(u) {
+      document.getElementById("avatar").src = u.profilePic || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+      document.getElementById("name").textContent = u.name || "Guest User";
+      document.getElementById("dob").textContent = "DOB: " + (u.dob || "-");
+      document.getElementById("age").textContent = "Age: " + calculateAge(u.dob);
+      document.getElementById("gender").textContent = "Gender: " + (u.gender || "-");
+      document.getElementById("mobile").textContent = "Mobile: " + (u.mobile || "-");
+      document.getElementById("role").textContent = "Role: " + (u.role || "-");
+      document.getElementById("sport").textContent = "Sport: " + (u.sport || "-");
+      document.getElementById("email").textContent = "Email: " + (u.email || "-");
+      document.getElementById("height").textContent = "Height: " + (u.height || "-");
+      document.getElementById("weight").textContent = "Weight: " + (u.weight || "-");
+      document.getElementById("bloodgroup").textContent = "Blood Group: " + (u.bloodgroup || "-");
+      document.getElementById("address").textContent = "Address: " + (u.address || "-");
+    }
+    displayProfile(user);
+
+    // Open modal and prefill
+    document.getElementById("editBtn").onclick = () => {
+      document.getElementById("editModal").style.display="flex";
+      document.getElementById("editName").value = user.name || "";
+      document.getElementById("editMobile").value = user.mobile || "";
+      document.getElementById("editEmail").value = user.email || "";
+      document.getElementById("editHeight").value = user.height || "";
+      document.getElementById("editWeight").value = user.weight || "";
+      document.getElementById("editBloodgroup").value = user.bloodgroup || "";
+      document.getElementById("editAddress").value = user.address || "";
+    };
+    document.getElementById("cancelEdit").onclick = () => document.getElementById("editModal").style.display="none";
+    document.getElementById("nextToStep2").onclick = () => {
+      document.querySelector(".step-1").classList.remove("active");
+      document.querySelector(".step-2").classList.add("active");
+    };
+    document.getElementById("prevToStep1").onclick = () => {
+      document.querySelector(".step-2").classList.remove("active");
+      document.querySelector(".step-1").classList.add("active");
+    };
+
+    document.getElementById("logoutBtn").onclick = logoutUser;
+
+    // Live validator
+    function attachValidator(id, validator, errorId, message) {
+      const input = document.getElementById(id);
+      const error = document.getElementById(errorId);
+      input.addEventListener("input", () => {
+        const val = input.value.trim();
+        input.classList.remove("error", "valid");
+        error.textContent = "";
+        if (!val) return; // blanks are allowed
+        if (!validator(val)) {
+          input.classList.add("error");
+          error.textContent = message;
+        } else {
+          input.classList.add("valid");
+        }
+      });
+    }
+
+    // Attach validation rules
+    attachValidator("editName", v => v.length>0, "nameError", "Name is required");
+    attachValidator("editMobile", v => /^[0-9]{10}$/.test(v), "mobileError", "Mobile must be 10 digits");
+    attachValidator("editEmail", v => v.includes("@"), "emailError", "Invalid email");
+    attachValidator("editHeight", v => (v>=50 && v<=250), "heightError", "Height must be between 50-250 cm");
+    attachValidator("editWeight", v => (v>=20 && v<=200), "weightError", "Weight must be between 20-200 kg");
+    attachValidator("editBloodgroup", v => /^(A|B|AB|O)[+-]$/i.test(v), "bloodError", "Blood group invalid (e.g. A+, O-)");
+    attachValidator("editAddress", v => /(?=.*[0-9])(?=.*[a-zA-Z])/.test(v), "addressError", "Invalid address. Must include letters & numbers");
+
+    // Save only updated non-empty fields
+    document.getElementById("saveEdit").onclick = () => {
+      let updates = {};
+      if (document.getElementById("editName").value.trim()) updates.name = document.getElementById("editName").value.trim();
+      if (document.getElementById("editMobile").value.trim()) updates.mobile = document.getElementById("editMobile").value.trim();
+      if (document.getElementById("editEmail").value.trim()) updates.email = document.getElementById("editEmail").value.trim();
+      if (document.getElementById("editHeight").value.trim()) updates.height = document.getElementById("editHeight").value.trim();
+      if (document.getElementById("editWeight").value.trim()) updates.weight = document.getElementById("editWeight").value.trim();
+      if (document.getElementById("editBloodgroup").value.trim()) updates.bloodgroup = document.getElementById("editBloodgroup").value.trim();
+      if (document.getElementById("editAddress").value.trim()) updates.address = document.getElementById("editAddress").value.trim();
+
+      const file = document.getElementById("editAvatar").files[0];
+      if (file) {
+        const r = new FileReader();
+        r.onload = e => { updates.profilePic = e.target.result; save(updates); };
+        r.readAsDataURL(file);
+      } else save(updates);
+
+      function save(upd) {
+        if (Object.keys(upd).length>0) { user = updateCurrentUser(upd); alert("✅ Profile updated!"); displayProfile(user); }
+        document.getElementById("editModal").style.display="none";
+      }
+    }
+  </script>
+</body>
+</html>

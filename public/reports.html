@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Coach Reports</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <!-- Tailwind + plugins (Stitch baseline) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#607afb",
+              "background-light": "#f5f6f8",
+              "background-dark": "#0f1323",
+              warning: "#F59E0B",
+              success: "#22C55E",
+            },
+            fontFamily: { display: ["Inter"] },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Stitch glass styles -->
+    <style>
+      .glassmorphic {
+        background-color: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .dark .glassmorphic {
+        background-color: rgba(15, 19, 35, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .glass-pill-warning {
+        background-color: rgba(245, 158, 11, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(245, 158, 11, 0.2);
+        box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+      }
+      .glass-pill-success {
+        background-color: rgba(34, 197, 94, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(34, 197, 94, 0.2);
+        box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .motion-safe\:transition,
+        .motion-safe\:transform {
+          transition: none !important;
+          transform: none !important;
+        }
+      }
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+
+  <body class="font-display bg-background-light dark:bg-background-dark">
+    <div class="flex min-h-screen w-full flex-col">
+      <!-- Header -->
+      <header
+        class="sticky top-0 z-20 flex items-center justify-between px-4 py-3 glassmorphic"
+        role="banner"
+      >
+        <div class="w-10"></div>
+        <h1 class="text-lg font-bold text-white">Reports</h1>
+        <button
+          class="flex h-10 w-10 items-center justify-center rounded-full text-white hover:bg-primary/20"
+          aria-label="Open settings"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+          >
+            <path
+              d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.21,107.21,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.71,107.71,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.21,107.21,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Z"
+            />
+          </svg>
+        </button>
+      </header>
+
+      <!-- Sticky Filters (UI placeholder) -->
+      <div class="sticky top-14 z-10 px-4 pt-2">
+        <div
+          class="glassmorphic rounded-xl px-3 py-2 flex items-center gap-2 overflow-x-auto"
+          role="toolbar"
+          aria-label="Report range filters"
+        >
+          <span class="text-xs text-white/60 px-2">Range</span>
+          <button
+            class="chip active rounded-full px-3 py-1 text-xs font-medium text-white bg-primary/20 hover:bg-primary/30 transition"
+            data-range="7d"
+            aria-pressed="false"
+          >
+            7D
+          </button>
+          <button
+            class="chip rounded-full px-3 py-1 text-xs font-medium text-white/80 hover:text-white hover:bg-white/10 transition"
+            data-range="30d"
+            aria-pressed="true"
+          >
+            30D
+          </button>
+          <button
+            class="chip rounded-full px-3 py-1 text-xs font-medium text-white/80 hover:text-white hover:bg-white/10 transition"
+            data-range="90d"
+          >
+            90D
+          </button>
+          <button
+            class="chip rounded-full px-3 py-1 text-xs font-medium text-white/80 hover:text-white hover:bg-white/10 transition"
+            data-range="custom"
+          >
+            Custom
+          </button>
+
+          <span class="ml-auto text-[11px] text-white/50 pr-1"
+            >(filters placeholder)</span
+          >
+        </div>
+      </div>
+
+      <!-- Main -->
+      <main class="flex-1 overflow-y-auto p-4 pb-24" role="main">
+        <!-- KPI Grid -->
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white px-2">Overview</h2>
+          <div
+            id="kpiGrid"
+            class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"
+            data-skeleton
+          >
+            <!-- Attendance Rate (30D) -->
+            <article
+              class="relative overflow-hidden rounded-xl glassmorphic shadow-lg group p-4"
+              aria-label="Attendance rate"
+            >
+              <header class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-base font-bold text-white">
+                    Attendance Rate
+                  </h3>
+                  <p class="text-sm text-white/70">Last 30 days</p>
+                </div>
+                <a
+                  href="coach-reports.html?view=attendance"
+                  class="text-primary"
+                  aria-label="View Attendance details"
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"
+                    />
+                  </svg>
+                </a>
+              </header>
+              <!-- Updated body: attendanceValue + progress bar -->
+              <div class="mt-4">
+                <div
+                  id="attendanceValue"
+                  class="text-3xl font-extrabold text-white tracking-tight"
+                  data-skel="attendance"
+                >
+                  —
+                </div>
+                <div
+                  class="mt-3 h-2 w-full rounded-full bg-white/10 overflow-hidden"
+                >
+                  <div
+                    id="attendanceBar"
+                    class="h-2 rounded-full bg-primary w-0"
+                  ></div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Approved vs Pending Achievements -->
+            <article
+              class="relative overflow-hidden rounded-xl glassmorphic shadow-lg group p-4"
+              aria-label="Achievements status"
+            >
+              <header class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-base font-bold text-white">Achievements</h3>
+                  <p class="text-sm text-white/70">Approved vs Pending</p>
+                </div>
+                <a
+                  href="coach-reports.html?view=achievements"
+                  class="text-primary"
+                  aria-label="View Achievements details"
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"
+                    />
+                  </svg>
+                </a>
+              </header>
+              <div class="mt-4 flex items-center gap-3">
+                <span
+                  class="inline-block glass-pill-success text-success text-xs font-semibold px-3 py-1 rounded-full"
+                  id="achApproved"
+                  >—</span
+                >
+                <span
+                  class="inline-block glass-pill-warning text-warning text-xs font-semibold px-3 py-1 rounded-full"
+                  id="achPending"
+                  >—</span
+                >
+              </div>
+            </article>
+
+            <!-- Active Players This Week -->
+            <article
+              class="relative overflow-hidden rounded-xl glassmorphic shadow-lg group p-4"
+              aria-label="Active players this week"
+            >
+              <header class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-base font-bold text-white">Active Players</h3>
+                  <p class="text-sm text-white/70">This week</p>
+                </div>
+                <a
+                  href="coach-reports.html?view=players"
+                  class="text-primary"
+                  aria-label="View Active Players details"
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"
+                    />
+                  </svg>
+                </a>
+              </header>
+              <!-- Updated body: activePlayersValue -->
+              <div class="mt-4">
+                <div
+                  id="activePlayersValue"
+                  class="text-3xl font-extrabold text-white"
+                  data-skel="activePlayers"
+                >
+                  —
+                </div>
+              </div>
+            </article>
+
+            <!-- Upcoming Sessions (Next 7 Days) -->
+            <article
+              class="relative overflow-hidden rounded-xl glassmorphic shadow-lg group p-4"
+              aria-label="Upcoming sessions next 7 days"
+            >
+              <header class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-base font-bold text-white">
+                    Upcoming Sessions
+                  </h3>
+                  <p class="text-sm text-white/70">Next 7 days</p>
+                </div>
+                <a
+                  href="coach-reports.html?view=schedules"
+                  class="text-primary"
+                  aria-label="View Schedules details"
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"
+                    />
+                  </svg>
+                </a>
+              </header>
+              <!-- Updated body: upcomingValue -->
+              <div class="mt-4">
+                <div
+                  id="upcomingValue"
+                  class="text-3xl font-extrabold text-white"
+                  data-skel="upcoming"
+                >
+                  —
+                </div>
+              </div>
+            </article>
+
+            <!-- Tournament Registrations (PENDING/CONFIRMED) -->
+            <article
+              class="relative overflow-hidden rounded-xl glassmorphic shadow-lg group p-4"
+              aria-label="Tournament registrations breakdown"
+            >
+              <header class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-base font-bold text-white">
+                    Tournament Registrations
+                  </h3>
+                  <p class="text-sm text-white/70">Pending vs Confirmed</p>
+                </div>
+                <a
+                  href="coach-reports.html?view=tournaments"
+                  class="text-primary"
+                  aria-label="View Tournament Registrations details"
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"
+                    />
+                  </svg>
+                </a>
+              </header>
+              <div class="mt-4 flex items-center gap-3">
+                <span
+                  class="inline-block glass-pill-warning text-warning text-xs font-semibold px-3 py-1 rounded-full"
+                  id="regPending"
+                  >—</span
+                >
+                <span
+                  class="inline-block glass-pill-success text-success text-xs font-semibold px-3 py-1 rounded-full"
+                  id="regConfirmed"
+                  >—</span
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Lazy section placeholder -->
+        <section class="mt-6" id="moreReports" data-lazy>
+          <h2 class="text-xl font-bold text-white px-2 mb-3">More Reports</h2>
+          <div class="glassmorphic rounded-xl p-4 text-white/70">
+            Coming soon — deeper drilldowns and visuals.
+          </div>
+        </section>
+      </main>
+
+      <!-- Bottom Nav -->
+      <footer
+        class="fixed bottom-0 left-0 right-0 glassmorphic border-t border-white/10"
+        role="contentinfo"
+      >
+        <nav class="flex justify-around p-2" aria-label="Primary">
+          <a
+            class="flex flex-col items-center justify-center gap-1 w-16 text-primary"
+            href="dashboard.html"
+            aria-label="Home"
+          >
+            <svg
+              fill="currentColor"
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48.11-.11a16,16,0,0,1,21.53,0,1.14,1.14,0,0,0,.11.11l80,75.48A16,16,0,0,1,224,115.55Z"
+              />
+            </svg>
+            <span class="text-xs font-medium">Home</span>
+          </a>
+          <a
+            class="flex flex-col items-center justify-center gap-1 w-16 text-white/60 hover:text-primary"
+            href="viewPlayers.html"
+            aria-label="Players"
+          >
+            <svg
+              fill="currentColor"
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Z"
+              />
+            </svg>
+            <span class="text-xs font-medium">Players</span>
+          </a>
+          <a
+            class="flex flex-col items-center justify-center gap-1 w-16 text-white/60 hover:text-primary"
+            href="schedules.html"
+            aria-label="Schedules"
+          >
+            <svg
+              fill="currentColor"
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-96-88v64a8,8,0,0,1-16,0V132.94l-4.42,2.22a8,8,0,0,1-7.16-14.32l16-8A8,8,0,0,1,112,120Zm59.16,30.45L152,176h16a8,8,0,0,1,0,16H136a8,8,0,0,0-6.4-12.8l28.78-38.37A8,8,0,1,0,145.07,132a8,8,0,1,1-13.85-8A24,24,0,0,1,176,136,23.76,23.76,0,0,1,171.16,150.45Z"
+              />
+            </svg>
+            <span class="text-xs font-medium">Schedules</span>
+          </a>
+          <a
+            class="flex flex-col items-center justify-center gap-1 w-16 text-white/60 hover:text-primary"
+            href="profile.html"
+            aria-label="Profile"
+          >
+            <svg
+              fill="currentColor"
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"
+              />
+            </svg>
+            <span class="text-xs font-medium">Profile</span>
+          </a>
+        </nav>
+      </footer>
+
+      <!-- Page controller -->
+      <script type="module" src="js/reports.js" defer></script>
+    </div>
+  </body>
+</html>

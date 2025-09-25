@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - SportIQ</title>
+    <link rel="stylesheet" href="css/global.css" />
+  </head>
+  <body data-page="register">
+    <div class="container">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <div class="input-box">
+          <label for="regUsername">Username</label>
+          <input type="text" id="regUsername" required />
+        </div>
+
+        <div class="input-box">
+          <label for="regEmail">Email</label>
+          <input type="email" id="regEmail" required />
+          <p class="field-error" id="regEmailError" aria-live="polite"></p>
+        </div>
+
+        <div class="input-box">
+          <label for="regPass">Password</label>
+          <input type="password" id="regPass" required minlength="6" />
+        </div>
+
+        <div class="input-box">
+          <label for="regPass2">Confirm Password</label>
+          <input type="password" id="regPass2" required />
+          <p class="field-error" id="regPass2Error" aria-live="polite"></p>
+        </div>
+
+        <button type="submit" class="btn btn-register">Register</button>
+      </form>
+
+      <p id="msg" aria-live="polite"></p>
+
+      <p>
+        Already have an account?
+        <a href="login.html" class="primary">Login</a>
+      </p>
+    </div>
+
+    <script type="module" src="js/auth-pages.js"></script>
+  </body>
+</html>

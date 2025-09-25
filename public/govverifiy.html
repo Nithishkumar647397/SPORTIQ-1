@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify Tournaments - Government Official</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/govaverify.css" />
+  </head>
+  <body data-page="gov-verify">
+    <div class="gov-giant glass-container">
+      <h2>Verify Tournaments</h2>
+
+      <!-- Filters -->
+      <div class="filters-bar">
+        <div class="status-chips">
+          <button class="btn-tiny chip active" data-status="SUBMITTED">
+            Pending
+          </button>
+          <button class="btn-tiny chip" data-status="APPROVED">Approved</button>
+          <button class="btn-tiny chip" data-status="REJECTED">Rejected</button>
+        </div>
+
+        <div class="region-filters">
+          <div class="input-box compact">
+            <label>State</label>
+            <select id="fState">
+              <option value="">All</option>
+            </select>
+          </div>
+          <div class="input-box compact">
+            <label>District</label>
+            <select id="fDistrict">
+              <option value="">All</option>
+            </select>
+          </div>
+          <div class="input-box compact">
+            <label>Search</label>
+            <input
+              type="text"
+              id="fSearch"
+              placeholder="Search tournament name..."
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- List -->
+      <div id="tList" class="tournament-grid"></div>
+      <p id="emptyMsg" class="muted hidden">
+        No tournaments found for the selected filters.
+      </p>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="detailsModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-inner details-modal">
+        <button class="modal-close" id="detailsClose" aria-label="Close">
+          &times;
+        </button>
+
+        <div class="details-content">
+          <div class="media">
+            <img id="dBanner" alt="Poster" />
+          </div>
+          <div class="info">
+            <h3 id="dName">Tournament</h3>
+            <p><strong>Sport:</strong> <span id="dSport">-</span></p>
+            <p><strong>Date/Time:</strong> <span id="dRange">-</span></p>
+            <p><strong>Venue:</strong> <span id="dVenue">-</span></p>
+            <p><strong>Region:</strong> <span id="dRegion">-</span></p>
+            <p id="dDesc" class="muted"></p>
+
+            <h4>Registration</h4>
+            <p><strong>Fee:</strong> <span id="dFee">-</span></p>
+            <p><strong>Documents:</strong> <span id="dDocs">-</span></p>
+            <p><strong>Last date:</strong> <span id="dLast">-</span></p>
+
+            <h4>Eligibility & Format</h4>
+            <p><strong>Age:</strong> <span id="dAge">-</span></p>
+            <p><strong>Gender:</strong> <span id="dGender">-</span></p>
+            <p>
+              <strong>District restriction:</strong>
+              <span id="dRestrict">-</span>
+            </p>
+            <p><strong>Format:</strong> <span id="dFormat">-</span></p>
+            <p><strong>Limits:</strong> <span id="dLimits">-</span></p>
+
+            <h4>Organizer</h4>
+            <p><strong>Name:</strong> <span id="dOrgName">-</span></p>
+            <p><strong>Mobile:</strong> <span id="dOrgMobile">-</span></p>
+            <p><strong>Email:</strong> <span id="dOrgEmail">-</span></p>
+
+            <div class="btn-row right">
+              <button id="approveBtn" class="btn-tiny edit">Approve</button>
+              <button id="rejectBtn" class="btn-tiny danger">Reject</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reject Modal -->
+    <div id="rejectModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-inner">
+        <button class="modal-close" id="rejectClose" aria-label="Close">
+          &times;
+        </button>
+        <h3>Reject tournament</h3>
+        <div class="input-box">
+          <label>Reason (required)</label>
+          <textarea
+            id="rejectReason"
+            rows="3"
+            placeholder="Enter rejection reason"
+          ></textarea>
+        </div>
+        <div class="btn-row right">
+          <button id="rejectCancel" class="btn-tiny">Cancel</button>
+          <button id="rejectConfirm" class="btn-tiny danger">Reject</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data + Controller -->
+    <script src="js/districts.js"></script>
+    <script type="module" src="js/govaverify.js"></script>
+  </body>
+</html>

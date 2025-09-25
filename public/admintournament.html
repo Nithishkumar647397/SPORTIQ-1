@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Tournament - Admin</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/admintournament.css" />
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  </head>
+  <body data-page="admin-tournament">
+    <div class="admin-giant glass-container">
+      <h2>Create Tournament</h2>
+      <p id="wizardMsg" class="muted"></p>
+
+      <!-- Section 1 -->
+      <div class="step step-1 active">
+        <h3>Section 1. Basic Details</h3>
+        <div class="input-box">
+          <label>Tournament Name</label>
+          <input type="text" id="name" />
+          <p class="field-error" id="e_name"></p>
+        </div>
+
+        <div class="input-box">
+          <label>Sport Type</label>
+          <select id="sport">
+            <option value="">Select Sport</option>
+            <option>Cricket</option>
+            <option>Football</option>
+            <option>Kabaddi</option>
+            <option>Volleyball</option>
+            <option>Badminton</option>
+            <option>Hockey</option>
+            <option>Basketball</option>
+            <option>Athletics</option>
+          </select>
+          <p class="field-error" id="e_sport"></p>
+        </div>
+
+        <div class="grid-3">
+          <div class="input-box">
+            <label>Start Date</label>
+            <input type="date" id="startDate" />
+            <p class="field-error" id="e_startDate"></p>
+          </div>
+          <div class="input-box">
+            <label>Start Time</label>
+            <input type="time" id="startTime" />
+            <p class="field-error" id="e_startTime"></p>
+          </div>
+          <div class="input-box">
+            <label>End Date</label>
+            <input type="date" id="endDate" />
+            <p class="field-error" id="e_endDate"></p>
+          </div>
+          <div class="input-box">
+            <label>End Time</label>
+            <input type="time" id="endTime" />
+            <p class="field-error" id="e_endTime"></p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="input-box">
+            <label>State</label>
+            <select id="state">
+              <option value="">Select State</option>
+            </select>
+            <p class="field-error" id="e_state"></p>
+          </div>
+          <div class="input-box">
+            <label>District</label>
+            <select id="district">
+              <option value="">Select District</option>
+            </select>
+            <p class="field-error" id="e_district"></p>
+          </div>
+          <div class="input-box">
+            <label>Venue/Location</label>
+            <input type="text" id="venue" placeholder="Stadium or ground" />
+            <p class="field-error" id="e_venue"></p>
+          </div>
+        </div>
+
+        <div class="wizard-footer">
+          <button class="btn btn-secondary left" id="prev1" disabled>
+            Previous
+          </button>
+          <a href="dashboard.html" class="btn center">Dashboard</a>
+          <button class="btn right" id="next1">Next</button>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="step step-2">
+        <h3>Section 2. Rules & Eligibility</h3>
+
+        <div class="grid-3">
+          <div class="input-box">
+            <label>Age Min (optional)</label>
+            <input type="number" id="ageMin" min="5" max="80" />
+          </div>
+          <div class="input-box">
+            <label>Age Max (optional)</label>
+            <input type="number" id="ageMax" min="5" max="80" />
+            <p class="field-error" id="e_ageRange"></p>
+          </div>
+          <div class="input-box">
+            <label>Gender</label>
+            <select id="gender">
+              <option value="ANY">Any</option>
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+              <option value="OTHER">Other</option>
+              <option value="MIXED">Mixed</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-box">
+          <label>District Restriction</label>
+          <select id="districtRestriction">
+            <option value="DISTRICT_ONLY">Only this district</option>
+            <option value="STATE_OPEN">Open to all in state</option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <label>Format</label>
+          <div class="radio-row">
+            <label
+              ><input type="radio" name="format" value="KNOCKOUT" checked />
+              Knockout</label
+            >
+            <label
+              ><input type="radio" name="format" value="LEAGUE" /> League</label
+            >
+            <label
+              ><input type="radio" name="format" value="POINTS" /> Points
+              system</label
+            >
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="input-box">
+            <label>Max Teams (optional)</label>
+            <input type="number" id="maxTeams" min="1" />
+          </div>
+          <div class="input-box">
+            <label>Max Players (optional)</label>
+            <input type="number" id="maxPlayers" min="1" />
+          </div>
+        </div>
+
+        <div class="wizard-footer">
+          <button class="btn btn-secondary left" id="prev2">Previous</button>
+          <a href="dashboard.html" class="btn center">Dashboard</a>
+          <button class="btn right" id="next2">Next</button>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="step step-3">
+        <h3>Section 3. Registration Details</h3>
+
+        <div class="grid-3">
+          <div class="input-box">
+            <label>Registration Fee (₹)</label>
+            <input type="number" id="regFee" min="0" step="1" />
+          </div>
+          <div class="input-box">
+            <label>Required Documents</label>
+            <div class="checkbox-col">
+              <label
+                ><input type="checkbox" value="ID Proof" class="docChk" /> ID
+                Proof</label
+              >
+              <label
+                ><input
+                  type="checkbox"
+                  value="Previous Certificates"
+                  class="docChk"
+                />
+                Previous Certificates</label
+              >
+            </div>
+          </div>
+          <div class="input-box">
+            <label>Last Date for Registration</label>
+            <input type="date" id="lastDate" />
+            <p class="field-error" id="e_lastDate"></p>
+          </div>
+        </div>
+
+        <div class="input-box">
+          <label
+            ><input type="checkbox" id="needsApproval" /> Requires approval
+            (registrations start as Pending)</label
+          >
+        </div>
+
+        <div class="wizard-footer">
+          <button class="btn btn-secondary left" id="prev3">Previous</button>
+          <a href="dashboard.html" class="btn center">Dashboard</a>
+          <button class="btn right" id="next3">Next</button>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="step step-4">
+        <h3>Section 4. Tournament Media</h3>
+        <div class="input-box">
+          <label>Poster/Logo/Banner (optional)</label>
+          <input type="file" id="banner" accept="image/*" />
+          <p class="muted">We compress images to save storage.</p>
+        </div>
+
+        <div class="wizard-footer">
+          <button class="btn btn-secondary left" id="prev4">Previous</button>
+          <a href="dashboard.html" class="btn center">Dashboard</a>
+          <button class="btn right" id="next4">Next</button>
+        </div>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="step step-5">
+        <h3>Section 5. Organizer Information</h3>
+        <div class="grid-3">
+          <div class="input-box">
+            <label>Organizer Name</label>
+            <input type="text" id="orgName" />
+            <p class="field-error" id="e_orgName"></p>
+          </div>
+          <div class="input-box">
+            <label>Mobile</label>
+            <input type="tel" id="orgMobile" placeholder="10-digit number" />
+            <p class="field-error" id="e_orgMobile"></p>
+          </div>
+          <div class="input-box">
+            <label>Email</label>
+            <input type="email" id="orgEmail" />
+            <p class="field-error" id="e_orgEmail"></p>
+          </div>
+        </div>
+
+        <div class="wizard-footer">
+          <button class="btn btn-secondary left" id="prev5">Previous</button>
+          <a href="dashboard.html" class="btn center">Dashboard</a>
+          <button class="btn right" id="next5">Next</button>
+        </div>
+      </div>
+
+      <!-- Section 6 -->
+      <div class="step step-6">
+        <h3>Section 6. Approval Flow</h3>
+        <p class="muted">
+          Submitted tournaments go to District Officials for approval before
+          publishing (for authenticity).
+        </p>
+        <p id="submitMsg" class="muted"></p>
+
+        <div class="btn-row">
+          <button class="btn" id="submitApproval">Submit for Approval</button>
+          <button class="btn btn-secondary" id="cancelWizard">Cancel</button>
+        </div>
+
+        <div class="wizard-footer end">
+          <button class="btn btn-secondary left" id="prev6">Previous</button>
+          <a href="dashboard.html" class="btn center">Dashboard</a>
+          <button
+            class="btn-small right"
+            id="createAnother"
+            style="display: none"
+          >
+            Create another
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/districts.js"></script>
+    <script type="module" src="js/adminTournament.js"></script>
+  </body>
+</html>

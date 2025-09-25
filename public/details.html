@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Details - SportIQ</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/details.css" />
+  </head>
+  <body data-page="details">
+    <div class="container details-container">
+      <h2 class="welcome">Fill Your Details</h2>
+
+      <!-- Step 1 -->
+      <div class="step step-1 active">
+        <div class="input-box">
+          <label>Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required />
+        </div>
+        <div class="input-box">
+          <label>DOB</label>
+          <input type="date" id="dob" required />
+        </div>
+        <div class="input-box">
+          <label>Gender</label>
+          <select id="gender" required>
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="input-box">
+          <label>Mobile</label>
+          <input
+            type="tel"
+            id="mobile"
+            placeholder="Enter phone number"
+            maxlength="10"
+            inputmode="numeric"
+            pattern="[0-9]{10}"
+            required
+          />
+          <p class="field-error" id="mobileError" aria-live="polite"></p>
+          <p class="note">Enter OTP: <b>123456</b> (demo)</p>
+          <input type="text" id="otp" placeholder="Enter OTP" required />
+          <p class="field-error" id="otpError" aria-live="polite"></p>
+        </div>
+
+        <p class="field-error" id="step1Error" aria-live="polite"></p>
+        <button class="btn green-btn" id="nextToRole">Next</button>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step step-2">
+        <div class="input-box">
+          <label>Role</label>
+          <select id="role" required>
+            <option value="">Select Role</option>
+            <option>Player</option>
+            <option>Coach</option>
+            <option>Admin</option>
+            <option>Government Official</option>
+          </select>
+          <p class="field-error" id="roleError" aria-live="polite"></p>
+        </div>
+        <div class="input-box">
+          <label>Sport</label>
+          <select id="sport" required>
+            <option value="">Select Sport</option>
+            <option>Cricket</option>
+            <option>Football</option>
+            <option>Kabaddi</option>
+            <option>Volleyball</option>
+            <option>Badminton</option>
+            <option>Hockey</option>
+            <option>Basketball</option>
+            <option>Athletics</option>
+          </select>
+          <p class="field-error" id="sportError" aria-live="polite"></p>
+        </div>
+        <button class="btn green-btn" id="nextToPic">Next</button>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step step-3">
+        <div class="input-box">
+          <label>Profile Picture</label>
+          <input type="file" id="profilePic" accept="image/*" />
+        </div>
+
+        <button class="btn green-btn" id="finishBtn">Finish</button>
+        <a href="#" id="skipLink" class="skip-link">Skip for now</a>
+        <p id="detailsMsg" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <script type="module" src="js/auth-pages.js"></script>
+  </body>
+</html>

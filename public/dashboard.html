@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - SportIQ</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</head>
+<body>
+  <div class="dashboard container">
+    <!-- Logout toolbar -->
+    <div class="toolbar">
+      <button id="logoutBtn" class="btn logout">🚪 Logout</button>
+    </div>
+
+    <h2 class="welcome">👋 Hello, <span id="username"></span></h2>
+    <h3 id="roleTag">🎭 Your Role:</h3>
+
+    <!-- Banner -->
+    <div id="roleBanner" class="role-badge" style="display: none"></div>
+
+    <!-- Cards Grid -->
+    <div id="roleCards" class="card-grid"></div>
+  </div>
+
+  <!-- ✅ Modular JS -->
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

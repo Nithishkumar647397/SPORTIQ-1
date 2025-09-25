@@ -1,0 +1,100 @@
+.gov-giant {
+  width: 96%;
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 24px;
+  border-radius: 18px;
+  text-align: left;
+}
+
+.filters-bar {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.status-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.chip.active {
+  background: rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.35);
+  color: #1e40af;
+}
+
+.region-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+.input-box.compact label {
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+.input-box.compact input,
+.input-box.compact select {
+  padding: 8px;
+  margin-bottom: 0;
+}
+
+.tournament-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.t-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.t-card .row1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.t-card .row2 {
+  margin-top: 4px;
+  color: #374151;
+  font-size: 0.92rem;
+}
+.t-card .row3 {
+  margin-top: 6px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.details-modal {
+  max-width: 980px;
+  width: 92vw;
+}
+.details-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 12px;
+}
+.details-content .media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  min-height: 220px;
+}
+.details-content .media img {
+  max-width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.hidden {
+  display: none !important;
+}

@@ -1,0 +1,53 @@
+.details-container {
+  max-width: 450px;
+  margin: auto;
+  text-align: center;
+}
+
+.step {
+  display: none;
+  animation: slideIn 0.6s ease;
+}
+.step.active {
+  display: block;
+}
+
+.green-btn {
+  background: linear-gradient(135deg, #34d399, #059669);
+  color: white;
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px;
+}
+.green-btn:hover {
+  background: linear-gradient(135deg, #10b981, #047857);
+}
+
+/* Small variant for the view image button */
+.green-btn.small {
+  width: auto;
+  padding: 8px 12px;
+  font-size: 13px;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Skip link (black by default; turns blue on click via JS) */
+.skip-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #111; /* black-ish */
+  text-decoration: none;
+  cursor: pointer;
+}

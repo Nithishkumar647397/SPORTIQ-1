@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Achievement - SportIQ</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/upload.css" />
+  </head>
+  <body>
+    <div class="upload-container">
+      <!-- Section 1 -->
+      <div id="section-1" class="upload-section active">
+        <h2 class="section-title">Achievement Details</h2>
+        <div class="parent">
+          <div class="div1">
+            <div class="input-box">
+              <label>Tournament Name</label>
+              <input
+                type="text"
+                id="title"
+                placeholder="Tournament name"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <label>Sport</label>
+              <select id="sportCategory">
+                <option value="">Select sport</option>
+                <option>Cricket</option>
+                <option>Football</option>
+                <option>Kabaddi</option>
+                <option>Volleyball</option>
+                <option>Badminton</option>
+              </select>
+            </div>
+            <div class="input-box">
+              <label>Date</label>
+              <input type="date" id="date" required />
+            </div>
+            <div class="input-box">
+              <label>Venue</label>
+              <input type="text" id="venue" placeholder="Venue" required />
+            </div>
+            <div class="input-box">
+              <label>Description</label>
+              <textarea
+                id="description"
+                placeholder="Write about your achievement"
+              ></textarea>
+            </div>
+          </div>
+          <div class="div2"></div>
+        </div>
+        <button class="btn neon-btn" id="nextBtn">Next ➡</button>
+      </div>
+
+      <!-- Section 2 -->
+      <div id="section-2" class="upload-section">
+        <h2 class="section-title">Upload Certificate</h2>
+        <input type="file" id="proof" accept="image/*" />
+
+        <!-- Preview (shows after you save a file) -->
+        <div id="previewWrap" class="preview-wrap" hidden>
+          <img id="previewImg" alt="Certificate preview" />
+          <div class="preview-meta">
+            <span id="previewSize"></span>
+          </div>
+        </div>
+
+        <div class="btn-group inline">
+          <button class="btn-small" id="saveCertBtn">Save Certificate</button>
+          <button class="btn-small logout" id="replaceCertBtn">Replace</button>
+        </div>
+        <div class="btn-group bottom">
+          <button class="btn-small dashboard" id="prevBtn">⬅ Previous</button>
+          <button class="btn-small" id="finalSave">✅ Save</button>
+          <button class="btn-small logout" id="cancelBtn">❌ Cancel</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="js/upload.js"></script>
+  </body>
+</html>

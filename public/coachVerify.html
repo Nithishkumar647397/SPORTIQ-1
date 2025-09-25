@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify Achievements - SportIQ</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/achievements.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>✅ Verify Player Achievements</h2>
+
+      <!-- Inline status (no browser alerts) -->
+      <div id="statusMsg" class="muted" style="min-height:18px; margin:8px 0;"></div>
+
+      <div id="pendingList"></div>
+    </div>
+
+    <!-- Proof preview modal -->
+    <div id="proofModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-inner glass-container">
+        <button id="proofClose" class="modal-close" aria-label="Close">✕</button>
+        <img id="proofImg" alt="Proof image" />
+      </div>
+    </div>
+
+    <!-- Reject with reason modal -->
+    <div id="rejectModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-inner glass-container">
+        <button id="rejectClose" class="modal-close" aria-label="Close">✕</button>
+        <h3>Reject Achievement</h3>
+        <div class="input-box">
+          <label for="rejectReason">Reason</label>
+          <textarea id="rejectReason" rows="3" placeholder="Explain the reason"></textarea>
+        </div>
+        <div class="btn-row right">
+          <button class="btn-tiny" id="rejectCancel">Cancel</button>
+          <button class="btn-tiny danger" id="rejectSubmit">Reject</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/coachVerify.js"></script>
+  </body>
+</html>

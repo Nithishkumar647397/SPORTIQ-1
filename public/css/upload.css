@@ -1,0 +1,92 @@
+.upload-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(15px);
+}
+
+.upload-section {
+  display: none;
+}
+.upload-section.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+.section-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.neon-btn {
+  background: linear-gradient(135deg, #34d399, #059669);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+}
+.neon-btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* File preview */
+.preview-wrap {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+.preview-wrap img {
+  max-width: 480px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+.preview-meta {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Utility to hide/show preview */
+[hidden] {
+  display: none !important;
+}
+
+/* Button group helpers used in HTML */
+.btn-group.inline {
+  justify-content: center;
+}
+.btn-group.bottom {
+  justify-content: space-between;
+}
+
+/* Responsive: stack form columns on small screens */
+@media (max-width: 780px) {
+  .parent {
+    grid-template-columns: 1fr;
+  }
+}

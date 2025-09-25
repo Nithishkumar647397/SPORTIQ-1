@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SportIQ Introduction</title>
+
+    <!-- Inter font for this landing page -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Global styles (existing) -->
+    <link rel="stylesheet" href="css/global.css" />
+
+    <!-- Tailwind config MUST load before CDN -->
+    <script src="js/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  </head>
+  <body
+    class="home-intro font-display bg-background-light dark:bg-background-dark"
+  >
+    <div
+      class="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden p-4"
+    >
+      <div
+        class="absolute -top-1/4 -left-1/4 h-1/2 w-1/2 rounded-full bg-primary/20 blur-3xl"
+      ></div>
+      <div
+        class="absolute -bottom-1/4 -right-1/4 h-1/2 w-1/2 rounded-full bg-primary/20 blur-3xl"
+      ></div>
+
+      <main
+        class="z-10 flex w-full max-w-md flex-col items-center justify-center text-center glass-effect rounded-xl p-8"
+      >
+        <div class="mb-6">
+          <!-- Replaced SVG with your logo image -->
+          <img
+            src="SportIQ blue logo.png"
+            alt="SportIQ logo"
+            class="h-20 w-auto"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </div>
+
+        <p class="mt-4 max-w-xs text-lg text-white/70">
+          Elevate your game with intelligent sports management.
+        </p>
+
+        <div class="mt-10 w-full">
+          <button
+            id="getStartedBtn"
+            class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-6 py-4 text-center text-lg font-bold text-white transition-all duration-300 ease-in-out hover:bg-primary/90 hover:scale-105 active:scale-100 neon-glow"
+          >
+            <span class="truncate">Get Started</span>
+          </button>
+        </div>
+      </main>
+    </div>
+
+    <!-- Page JS -->
+    <script src="js/index-intro.js" defer></script>
+  </body>
+</html>

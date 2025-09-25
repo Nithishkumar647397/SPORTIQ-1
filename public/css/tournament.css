@@ -1,0 +1,195 @@
+.tournament-container {
+  width: 450px;
+  max-width: 95%;
+  padding: 30px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.welcome {
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+  outline: none;
+  transition: 0.3s ease;
+}
+input:focus,
+select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Neon Blue-Green Button */
+.neon-btn {
+  width: 100%;
+  padding: 12px;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #34d399, #2563eb);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6), 0 0 20px rgba(16, 185, 129, 0.5);
+}
+.neon-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.9), 0 0 40px rgba(16, 185, 129, 0.8);
+}
+
+/* Steps */
+.t-step {
+  display: none;
+}
+.t-step.active {
+  display: block;
+  animation: slideIn 0.6s ease;
+}
+.t-step.t-step-3 .tournament-card h3 {
+  margin-bottom: 8px;
+}
+.t-step.t-step-3 .tournament-card p {
+  margin: 4px 0;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tournament List */
+.tournament-list {
+  margin-top: 20px;
+  text-align: left;
+}
+.tournament-card {
+  background: rgba(255, 255, 255, 0.55);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  transition: 0.2s;
+}
+.tournament-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Minimal footer spacing (button uses global .btn-small.dashboard) */
+.nav-footer {
+  margin-top: 16px;
+}
+
+/* Landing layout for tournaments (two tiles) */
+.t-landing-page {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 0 10px;
+  text-align: center;
+}
+.t-landing-grid {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+}
+.t-landing-grid .glass-container {
+  flex: 1 1 45%;
+  padding: 50px 30px;
+}
+@media (max-width: 780px) {
+  .t-landing-grid .glass-container {
+    flex: 1 1 100%;
+  }
+}
+
+/* Card top row and bell */
+.t-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.bell-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.06);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+.bell-btn:hover {
+  transform: translateY(-1px);
+}
+.bell-btn lord-icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* Fallback hint */
+.fallback-hint {
+  margin: 8px 0 4px 0;
+  font-size: 13px;
+}
+.hidden {
+  display: none !important;
+}
+
+/* ========================
+   Big glass container variant
+======================== */
+.tournament-giant {
+  width: 96%;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 26px 24px;
+  border-radius: 18px;
+  /* glass look comes from .glass-container (global.css) */
+  text-align: left;
+}
+.tournament-giant .welcome {
+  text-align: left;
+}
+
+/* Footer inside big container */
+.t-giant-footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+.home-blue {
+  /* reuse .btn (already blue), keep explicitly for clarity */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schedules - SportIQ</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/schedules.css" />
+    <!-- Lordicon (load once) -->
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  </head>
+  <body data-page="coach-schedules">
+    <div class="sched-giant glass-container">
+      <!-- Landing: two tiles -->
+      <div id="schedLanding" class="sched-landing">
+        <div id="createTile" class="sched-tile">
+          <div class="tile-icon">
+            <!-- Calendar + timer icon -->
+            <lord-icon
+              src="https://cdn.lordicon.com/uphbloed.json"
+              trigger="hover"
+              colors="primary:#121331,secondary:#66ee78"
+              style="width:80px;height:80px">
+            </lord-icon>
+          </div>
+          <h3>Create New Schedule</h3>
+          <p class="muted">Plan practice sessions or team events.</p>
+        </div>
+
+        <div id="requestsTile" class="sched-tile">
+          <div class="tile-icon">
+            <!-- Athlete/player icon -->
+            <lord-icon
+              src="https://cdn.lordicon.com/gsjfryhc.json"
+              trigger="hover"
+              colors="primary:#121331,secondary:#66ee78"
+              style="width:80px;height:80px">
+            </lord-icon>
+          </div>
+          <h3>Requests from Players</h3>
+          <p class="muted">Approve or reject player requests.</p>
+        </div>
+      </div>
+
+      <!-- Landing footer: dashboard icon -->
+      <div class="landing-footer">
+        <a href="dashboard.html" class="dashboard-icon" title="Dashboard" aria-label="Dashboard">🏠</a>
+      </div>
+
+      <!-- Create view -->
+      <div id="schedCreate" class="hidden">
+        <div class="sched-columns">
+          <!-- Left: schedule form -->
+          <div class="sched-left">
+            <h3>Schedule details</h3>
+
+            <div class="input-box">
+              <label>Sport</label>
+              <input type="text" id="schSport" disabled />
+            </div>
+
+            <div class="input-row two">
+              <div class="input-box">
+                <label>Date</label>
+                <input type="date" id="schDate" />
+              </div>
+              <div class="input-box">
+                <label>Start Time</label>
+                <input type="time" id="schStart" />
+              </div>
+              <div class="input-box">
+                <label>End Time (optional)</label>
+                <input type="time" id="schEnd" />
+              </div>
+            </div>
+
+            <div class="input-box">
+              <label>Venue</label>
+              <select id="schVenue"></select>
+            </div>
+
+            <div class="input-box">
+              <label>Entrance</label>
+              <select id="schEntrance">
+                <option value="">Select</option>
+                <option value="OPEN">Open to all</option>
+                <option value="APPROVAL">Approval needed</option>
+              </select>
+            </div>
+
+            <p id="formMsg" class="field-error"></p>
+
+            <div class="btn-row">
+              <button id="saveSchedule" class="btn">Save</button>
+              <button id="cancelCreate" class="btn btn-secondary">Cancel</button>
+              <a href="dashboard.html" class="btn btn-small dashboard">Dashboard</a>
+            </div>
+          </div>
+
+          <!-- Right: my schedules -->
+          <div class="sched-right">
+            <h3>My schedules</h3>
+            <div id="mySchedulesEmpty" class="muted">Create schedules</div>
+            <div id="mySchedulesList" class="schedules-grid"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Requests view -->
+      <div id="schedRequests" class="hidden">
+        <div class="sched-columns">
+          <!-- Left: schedules list -->
+          <div class="sched-left">
+            <h3>Schedules</h3>
+            <div id="coachSchedulesEmpty" class="muted">Create schedules</div>
+            <div id="coachSchedulesGrid" class="schedules-grid"></div>
+          </div>
+
+          <!-- Right: player requests -->
+          <div class="sched-right">
+            <h3>Player requests</h3>
+            <div id="noRequestsMsg" class="muted">No requests pending</div>
+            <div id="requestsGrid" class="requests-grid"></div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <a href="dashboard.html" class="btn btn-small dashboard">Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/coachSchedules.js"></script>
+  </body>
+</html>

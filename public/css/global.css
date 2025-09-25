@@ -1,0 +1,436 @@
+/* =====================================================
+   RESET + BASE
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Background */
+  background: url("backlogin.jpg") no-repeat center/cover;
+  background-attachment: fixed;
+}
+
+/* =====================================================
+   GLASS CONTAINER (page shell)
+===================================================== */
+.container {
+  width: 350px;
+  max-width: 92%;
+  padding: 30px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  animation: fadeInUp 0.7s ease-out;
+}
+
+/* Headings & text */
+.container h1,
+.container h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #111827;
+}
+
+.container p {
+  font-size: 14px;
+  text-align: center;
+  color: #374151;
+  margin: 10px 0;
+}
+
+/* =====================================================
+   INPUTS (global for login/register/details)
+===================================================== */
+.input-box {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input-box label {
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #374151;
+}
+
+.input-box input,
+.input-box select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.6);
+  transition: 0.3s;
+}
+
+.input-box input:focus,
+.input-box select:focus,
+textarea:focus {
+  border-color: #2563eb;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.3);
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Register Button (Purple variant) */
+.btn-register {
+  background: linear-gradient(135deg, #9333ea, #7e22ce);
+}
+.btn-register:hover {
+  background: linear-gradient(135deg, #7e22ce, #5b21b6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(147, 51, 234, 0.4);
+}
+
+/* Secondary Button (Cyan variant) */
+.btn-secondary {
+  background: linear-gradient(135deg, #06b6d4, #0284c7);
+}
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #0ea5e9, #075985);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(6, 182, 212, 0.4);
+}
+
+/* Small button for sub-actions */
+.btn-small {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  border: none;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  transition: all 0.3s ease;
+}
+.btn-small:hover {
+  transform: translateY(-2px);
+}
+
+/* Logout red variant */
+.btn-small.logout {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+}
+.btn-small.logout:hover {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+}
+
+/* =====================================================
+   Animations
+===================================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================================
+   SHARED UTILITIES (moved from page CSS)
+===================================================== */
+
+/* Button rows used across pages */
+.btn-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Inline action row inside cards/modals */
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.btn-row.right {
+  justify-content: flex-end;
+}
+
+/* Tiny action buttons */
+.btn-tiny {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  color: #111827;
+}
+.btn-tiny:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.btn-tiny:active {
+  transform: translateY(1px);
+}
+.btn-tiny[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Tiny button variants */
+.btn-tiny.view {
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.18);
+  color: #1e40af;
+}
+.btn-tiny.edit {
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  border-color: transparent;
+}
+.btn-tiny.danger {
+  color: #fff;
+  background: #ef4444;
+  border-color: #ef4444;
+}
+
+/* Badges (status chips) */
+.badge {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+.badge.pending {
+  background: #fbbf24;
+  color: #111;
+}
+.badge.approved {
+  background: #10b981;
+  color: #fff;
+}
+.badge.rejected {
+  background: #ef4444;
+  color: #fff;
+}
+
+/* Modals (shared) */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 50;
+}
+.modal:not(.hidden) {
+  display: flex;
+}
+.modal-inner {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+.modal-inner img {
+  max-width: 90vw;
+  max-height: 80vh;
+  display: block;
+  border-radius: 12px;
+}
+.modal-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Utilities */
+.hidden {
+  display: none !important;
+}
+.muted {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* Inline form errors */
+.field-error {
+  color: #b91c1c;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.input-error {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.25);
+  background: rgba(255, 255, 255, 0.9);
+}
+/* Inline form errors */
+.field-error {
+  color: #b91c1c;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.input-error {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.25);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Checkbox alignment fix inside input-box */
+.input-box input[type="checkbox"] {
+  width: auto;
+  padding: 0;
+  margin-right: 8px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  align-self: center;
+}
+
+/* Make the checkbox + text sit on one line */
+.input-box label.inline {
+  margin-bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =====================================================
+   GLASS SURFACE + TILES (globalized)
+===================================================== */
+
+/* Reusable inner glass surface (cards, sections, modals, etc.) */
+.glass-container {
+  padding: 50px 30px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  text-align: center;
+  transition: 0.3s;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.glass-container:hover {
+  transform: translateY(-6px) scale(1.05);
+}
+
+/* Clickable tile behavior (combine with .glass-container) */
+.card-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.card-box:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.45);
+  border-radius: 16px;
+}
+/* ===== SportIQ Landing (index.html) overrides — append at bottom ===== */
+
+/* Use Inter on the landing page (overrides global * selector) */
+.home-intro,
+.home-intro * {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif !important;
+}
+
+/* Reset the global body layout/background for this page only */
+body.home-intro {
+  display: block; /* undo global center-flex */
+  min-height: max(884px, 100dvh);
+  background-image: none !important; /* remove global background image */
+  background-attachment: initial !important;
+}
+
+/* Fallback background colors (work even if Tailwind config fails to load) */
+body.home-intro {
+  background-color: #f5f6f8 !important; /* light fallback */
+}
+html.dark body.home-intro {
+  background-color: #0f1423 !important; /* dark fallback */
+}
+
+/* Effects from the design */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.neon-glow {
+  /* Use explicit color values—Play CDN can't resolve theme() in CSS files */
+  box-shadow: 0 0 5px rgba(51, 101, 250, 0.7), 0 0 10px rgba(51, 101, 250, 0.6),
+    0 0 15px rgba(51, 101, 250, 0.5);
+}
+
+/* Ensure the decorative blobs show the right color even without Tailwind */
+.home-intro .bg-primary {
+  background-color: #3365fa !important;
+}
+.home-intro .bg-primary\/20 {
+  background-color: rgba(51, 101, 250, 0.2) !important;
+}

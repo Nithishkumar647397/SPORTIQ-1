@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Players - SportIQ</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/players.css" />
+  </head>
+  <body data-page="viewPlayers">
+    <!-- Giant glass container -->
+    <div class="players-giant glass-container">
+      <div class="players-topbar">
+        <button id="filterBtn" class="btn-tiny filter-btn" title="Filters">🔎 Filter</button>
+        <h2 class="title">Players</h2>
+        <div class="spacer"></div>
+        <span class="muted" id="sportTag"></span>
+      </div>
+
+      <!-- Filter panel -->
+      <div id="filterPanel" class="filter-panel hidden">
+        <div class="filter-row">
+          <label>Sport</label>
+          <select id="filterSport" disabled></select>
+        </div>
+        <div class="filter-row two">
+          <div>
+            <label>Min Age</label>
+            <input type="number" id="filterMinAge" min="5" max="80" placeholder="e.g. 10" />
+          </div>
+          <div>
+            <label>Max Age</label>
+            <input type="number" id="filterMaxAge" min="5" max="80" placeholder="e.g. 25" />
+          </div>
+        </div>
+        <div class="btn-row right">
+          <button id="resetFilters" class="btn-tiny">Reset</button>
+          <button id="applyFilters" class="btn-tiny edit">Apply</button>
+        </div>
+      </div>
+
+      <!-- Grid of player cards -->
+      <div id="playersGrid" class="players-grid"></div>
+
+      <!-- Empty state -->
+      <p id="emptyMsg" class="muted hidden">No players found for your sport.</p>
+    </div>
+
+    <!-- Full profile modal -->
+    <div id="profileModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-inner two-col large">
+        <button class="modal-close" id="profileModalClose" aria-label="Close">&times;</button>
+
+        <!-- Left: details -->
+        <div class="modal-col details">
+          <h3 id="m_name">Player</h3>
+          <div class="detail-list">
+            <p><strong>Age:</strong> <span id="m_age">-</span></p>
+            <p><strong>DOB:</strong> <span id="m_dob">-</span></p>
+            <p><strong>Email:</strong> <span id="m_email">-</span></p>
+            <p><strong>Mobile:</strong> <span id="m_mobile">-</span></p>
+            <p><strong>Sport:</strong> <span id="m_sport">-</span></p>
+            <div class="ach-summary">
+              <strong>Achievements:</strong>
+              <span class="badge approved" id="m_approved">Approved: 0</span>
+              <span class="badge pending" id="m_pending">Pending: 0</span>
+              <span class="badge rejected" id="m_rejected">Rejected: 0</span>
+            </div>
+            <p><strong>Height:</strong> <span id="m_height">-</span></p>
+            <p><strong>Weight:</strong> <span id="m_weight">-</span></p>
+            <p><strong>Blood Group:</strong> <span id="m_blood">-</span></p>
+          </div>
+          <div class="btn-row">
+            <button id="aboutBtn" class="btn-yellow">About</button>
+          </div>
+        </div>
+
+        <!-- Right: profile image -->
+        <div class="modal-col picture">
+          <img id="m_avatar" class="avatar large" src="" alt="Player photo" />
+        </div>
+      </div>
+    </div>
+
+    <!-- About modal (stub) -->
+    <div id="aboutModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-inner">
+        <button class="modal-close" id="aboutModalClose" aria-label="Close">&times;</button>
+        <h3>About Player</h3>
+        <p id="aboutText" class="muted" style="max-width: 60ch;"></p>
+      </div>
+    </div>
+
+    <script type="module" src="js/coachPlayers.js"></script>
+  </body>
+</html>

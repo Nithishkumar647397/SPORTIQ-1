@@ -1,0 +1,117 @@
+/* Achievements landing page (achievements.html)
+   Shows two cards: Upload Achievement, My Achievements
+*/
+
+/* Page container (works with .container-lg from global.css) */
+.achievements-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 60px auto;
+  justify-content: space-between;
+}
+
+/* Ensure heading takes its own row */
+.achievements-page .welcome {
+  flex: 1 1 100%;
+}
+
+/* Grid wrapper for the two cards */
+.achievements-grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+/* Layout sizing for cards inside the grid (glass + tile styles are global) */
+.achievements-grid .glass-container {
+  flex: 1 1 45%;
+}
+
+/* Responsive: stack cards on narrow screens */
+@media (max-width: 780px) {
+  .achievements-grid .glass-container {
+    flex: 1 1 100%;
+  }
+}
+
+/* =========================================================
+   My Achievements (myachieve.html) — specifics only
+   ========================================================= */
+
+.achievement-list {
+  margin-top: 20px;
+  display: grid;
+  gap: 20px;
+}
+
+.achievement-card {
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Title + meta */
+.ach-title {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.05rem;
+}
+.ach-meta {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ach-desc {
+  margin: 10px 0 8px;
+  line-height: 1.5;
+}
+.ach-reason {
+  color: #b91c1c;
+  background: #fee2e2;
+  padding: 6px 8px;
+  border-radius: 8px;
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+/* Spacing helper for confirmation text */
+.confirm-text {
+  margin: 10px 0 16px;
+}
+
+/* Edit form (only used in My Achievements modal) */
+.edit-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+.edit-form .full {
+  grid-column: 1 / -1;
+}
+.edit-form input,
+.edit-form select,
+.edit-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 780px) {
+  .edit-form {
+    grid-template-columns: 1fr;
+  }
+}

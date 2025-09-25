@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Tournaments - SportIQ</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/tournament.css" />
+  </head>
+  <body>
+    <!-- Big glass container -->
+    <div class="tournament-giant glass-container">
+      <h2 class="welcome">🔎 Find Tournaments</h2>
+
+      <!-- STEP 1: State Selection -->
+      <div class="t-step t-step-1 active">
+        <label for="stateInput">Select Your State</label>
+        <input
+          type="text"
+          id="stateInput"
+          placeholder="Type or select a state"
+          list="stateList"
+        />
+        <datalist id="stateList"></datalist>
+        <p id="stateErr" class="field-error"></p>
+        <button class="btn neon-btn" id="nextBtn">Next</button>
+      </div>
+
+      <!-- STEP 2: District Selection + Results -->
+      <div class="t-step t-step-2">
+        <label for="districtInput">Select District</label>
+        <input
+          type="text"
+          id="districtInput"
+          placeholder="Type or select a district"
+          list="districtList"
+        />
+        <datalist id="districtList"></datalist>
+        <p id="districtErr" class="field-error"></p>
+        <button class="btn neon-btn" id="showBtn">Show Tournaments</button>
+
+        <p id="fallbackHint" class="muted fallback-hint hidden"></p>
+        <div id="tournamentList" class="tournament-list"></div>
+      </div>
+
+      <!-- STEP 3: Tournament Details -->
+      <div class="t-step t-step-3">
+        <div id="detailCard" class="tournament-card">
+          <h3 id="dName"></h3>
+          <p><strong>Date:</strong> <span id="dDate"></span></p>
+          <p><strong>Venue:</strong> <span id="dVenue"></span></p>
+          <p><strong>Sport:</strong> <span id="dSport"></span></p>
+          <p id="dDesc" class="muted"></p>
+
+          <div class="btn-group">
+            <button class="btn btn-secondary" id="registerBtn">Register</button>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn-small dashboard" id="backToList">
+              ⬅ Return to Search
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard button INSIDE the big glass container -->
+      <div class="t-giant-footer">
+        <a href="dashboard.html" class="btn home-blue"> 🏠 Dashboard </a>
+      </div>
+    </div>
+
+    <script src="js/districts.js"></script>
+    <script type="module" src="js/tournaments.js"></script>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Registrations - admin</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/adminregistrations.css" />
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  </head>
+  <body data-page="admin-registrations">
+    <div class="adminreg-giant glass-container">
+      <h2>Manage Registrations</h2>
+
+      <div class="reg-columns">
+        <!-- Left: Tournament picker -->
+        <div class="pane left-pane">
+          <div class="picker-header">
+            <input
+              type="text"
+              id="tSearch"
+              placeholder="Search tournaments..."
+            />
+            <label class="muted small">
+              <input type="checkbox" id="showAll" />
+              Show all my tournaments
+            </label>
+          </div>
+          <div id="tournamentPicker" class="tournament-picker"></div>
+          <p id="noTournaments" class="muted hidden">
+            No tournaments found.
+            <a href="admintournament.html">Create a tournament</a>
+          </p>
+        </div>
+
+        <!-- Right: Registrations list -->
+        <div class="pane right-pane">
+          <div class="reg-toolbar">
+            <div class="counts">
+              <span id="countAll" class="badge">All: 0</span>
+              <span id="countPending" class="badge pending">Pending: 0</span>
+              <span id="countConfirmed" class="badge approved"
+                >Confirmed: 0</span
+              >
+              <span id="countRejected" class="badge rejected">Rejected: 0</span>
+            </div>
+            <div class="filters">
+              <button class="btn-tiny chip active" data-status="ALL">
+                All
+              </button>
+              <button class="btn-tiny chip" data-status="PENDING">
+                Pending
+              </button>
+              <button class="btn-tiny chip" data-status="CONFIRMED">
+                Confirmed
+              </button>
+              <button class="btn-tiny chip" data-status="REJECTED">
+                Rejected
+              </button>
+            </div>
+          </div>
+
+          <div class="reg-actions">
+            <input
+              type="text"
+              id="regSearch"
+              placeholder="Search player name/email..."
+            />
+            <div class="btn-row right">
+              <button id="bulkApprove" class="btn-tiny edit">
+                Approve all pending
+              </button>
+              <button id="bulkReject" class="btn-tiny danger">
+                Reject all pending
+              </button>
+              <button id="exportCsv" class="btn-tiny">Export CSV</button>
+            </div>
+          </div>
+
+          <div id="registrantsList" class="registrants-grid"></div>
+          <p id="noRegistrations" class="muted hidden">No registrations yet.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reject reason modal -->
+    <div id="rejectModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-inner">
+        <button class="modal-close" id="rejectClose" aria-label="Close">
+          &times;
+        </button>
+        <h3>Reject registration</h3>
+        <div class="input-box">
+          <label>Reason (required)</label>
+          <textarea
+            id="rejectReason"
+            rows="3"
+            placeholder="Enter reason"
+          ></textarea>
+        </div>
+        <div class="btn-row right">
+          <button id="rejectCancel" class="btn-tiny">Cancel</button>
+          <button id="rejectConfirm" class="btn-tiny danger">Reject</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile peek modal -->
+    <div id="profileModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-inner">
+        <button class="modal-close" id="profileClose" aria-label="Close">
+          &times;
+        </button>
+        <div class="profile-peek">
+          <img id="peekAvatar" class="avatar" src="" alt="avatar" />
+          <div>
+            <h3 id="peekName">Player</h3>
+            <p><strong>Sport:</strong> <span id="peekSport">-</span></p>
+            <p><strong>Email:</strong> <span id="peekEmail">-</span></p>
+            <p><strong>Mobile:</strong> <span id="peekMobile">-</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/adminRegistrations.js"></script>
+  </body>
+</html>

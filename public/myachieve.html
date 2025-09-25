@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Achievements - SportIQ</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/achievements.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>🏅 My Achievements</h2>
+
+      <div id="achievementList" class="achievement-list"></div>
+
+      <div class="btn-group">
+        <button
+          class="btn-small dashboard"
+          onclick="window.location.href='achievements.html'"
+        >
+          ⬅ Back
+        </button>
+      </div>
+    </div>
+
+    <!-- Proof preview modal -->
+    <div id="imgModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-inner glass-container">
+        <button id="imgModalClose" class="modal-close" aria-label="Close">
+          ✕
+        </button>
+        <img id="modalImg" alt="Proof image" />
+      </div>
+    </div>
+
+    <!-- Edit achievement modal -->
+    <div id="editModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-inner glass-container">
+        <button id="editModalClose" class="modal-close" aria-label="Close">
+          ✕
+        </button>
+        <h3>Edit Achievement</h3>
+        <form id="editForm" class="edit-form">
+          <label>
+            Title
+            <input
+              id="editTitle"
+              type="text"
+              placeholder="Tournament name"
+              required
+            />
+          </label>
+          <label>
+            Sport
+            <select id="editSport" required>
+              <option value="">Select sport</option>
+              <option>Cricket</option>
+              <option>Football</option>
+              <option>Kabaddi</option>
+              <option>Volleyball</option>
+              <option>Badminton</option>
+            </select>
+          </label>
+          <label>
+            Date
+            <input id="editDate" type="date" required />
+          </label>
+          <label>
+            Venue
+            <input id="editVenue" type="text" placeholder="Venue" required />
+          </label>
+          <label class="full">
+            Description
+            <textarea
+              id="editDescription"
+              rows="3"
+              placeholder="Write about your achievement"
+            ></textarea>
+          </label>
+          <div class="btn-row right">
+            <button type="button" class="btn-tiny" id="editCancel">
+              Cancel
+            </button>
+            <button type="submit" class="btn-tiny edit" id="editSave">
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Delete confirmation modal -->
+    <div id="deleteModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-inner glass-container">
+        <button id="deleteModalClose" class="modal-close" aria-label="Close">
+          ✕
+        </button>
+        <h3>Delete Achievement</h3>
+        <p class="confirm-text muted">This action cannot be undone.</p>
+        <div class="btn-row right">
+          <button class="btn-tiny" id="deleteCancel">Cancel</button>
+          <button class="btn-tiny danger" id="deleteConfirm">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/myachieve.js"></script>
+  </body>
+</html>

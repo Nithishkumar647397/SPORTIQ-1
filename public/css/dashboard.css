@@ -1,0 +1,75 @@
+.dashboard {
+  position: relative;
+  width: 95%;
+  max-width: 1000px;
+  margin: 40px auto;
+  text-align: center;
+  padding: 40px 30px;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+
+  animation: fadeInUp 0.6s ease;
+}
+
+/* Toolbar */
+.toolbar {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+.toolbar .btn.logout {
+  padding: 8px 16px;
+  font-size: 14px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+.toolbar .btn.logout:hover {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+}
+
+/* Welcome */
+.welcome { font-size: 1.8rem; font-weight: 600; margin: 10px 0; color:#111827; }
+#roleTag { font-size: 1rem; margin-bottom: 10px; color:#374151; }
+
+/* Banner */
+.role-badge {
+  background: var(--role-color, rgba(0,0,0,0.6));
+  color: white; font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+/* Cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+}
+.card-box {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:20px; border-radius:14px; text-decoration:none; color:#111827;
+  background:rgba(255,255,255,0.55); border:2px solid var(--role-color, transparent);
+  transition: all .3s;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+.card-box:hover {
+  transform: translateY(-4px) scale(1.03);
+  background: rgba(255,255,255,0.75);
+}
+
+/* Role Colors */
+.dashboard.player-mode { --role-color: #2563eb; }
+.dashboard.coach-mode  { --role-color: #059669; }
+.dashboard.admin-mode  { --role-color: #dc2626; }
+.dashboard.govt-mode   { --role-color: #9333ea; }
+
+@keyframes fadeInUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
